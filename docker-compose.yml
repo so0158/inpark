@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  # auth-server:
+  #   build:
+  #     context: ./inpark-auth  # auth 서버의 Dockerfile이 있는 디렉터리
+  #     dockerfile: Dockerfile
+  #   container_name: inpark_auth
+  #   ports:
+  #     - "8081:9000"   # 내부 8080 포트를 호스트 8081 포트로 매핑
+  #   environment:
+  #     - SPRING_PROFILES_ACTIVE=prod
+
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_USER: ssyoung
+      POSTGRES_PASSWORD: astems1027
+      POSTGRES_DB: inpark
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
